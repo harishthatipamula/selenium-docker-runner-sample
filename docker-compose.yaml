@@ -2,17 +2,15 @@ version: "3"
 services:
   hub:
     image: selenium/hub:3.14
-    ports:
-      - "4444:4444"
   chrome:
-    image: selenium/node-chrome:3.14
+    image: selenium/node-chrome:3.14      
     depends_on:
       - hub
     environment:
       - HUB_HOST=hub
   firefox:
     image: selenium/node-firefox:3.14
-    shm_size: '1gb'
+    shm_size: '1gb'   
     depends_on:
       - hub
     environment:
@@ -23,8 +21,19 @@ services:
       - chrome
       - firefox
     environment:
-      - BROWSER=firefox
       - HUB_HOST=hub
+      - BROWSER=firefox
       - MODULE=search-module.xml
     volumes:
-      - ./search-result:/usr/share/udemy/test-output
+      - ./output/search-result:/usr/share/udemy/test-output      
+  book-flight-module:
+    image: abhishekneela/b2b-automation-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - HUB_HOST=hub
+      - BROWSER=chrome
+      - MODULE=book-flight-module.xml
+    volumes:
+      - ./output/book-result:/usr/share/udemy/test-output   
