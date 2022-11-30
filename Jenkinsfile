@@ -16,6 +16,19 @@ pipeline{
 				bat "docker-compose up search-module book-flight-module"
 			}
 		}
+		stage('reports') {
+    			steps {
+    			script {
+            			allure([
+                    			includeProperties: false,
+                    			jdk: '',
+                    			properties: [],
+                    			reportBuildPolicy: 'ALWAYS',
+                    			results: [[path: 'target/allure-results']]
+            			])
+    			}
+    			}
+		}
 	}
 	post{
 		always{
