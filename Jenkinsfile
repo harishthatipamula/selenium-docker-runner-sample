@@ -16,7 +16,7 @@ pipeline{
 				
 					bat "docker-compose up search-module book-flight-module"
 					stash name: 'allure-results', includes: 'allure-results/*'
-                    currentBuild.result = 'SUCCESS'
+                   
 				
 				
 			}
