@@ -21,11 +21,11 @@ pipeline{
 				
 			}
 		}
-		stage('Generate Report') {
-			steps {
-					sh './node_modules/.bin/allure generate ./allure-results'
-			}
-		}
+		// stage('Generate Report') {
+		// 	steps {
+		// 			sh './node_modules/.bin/allure generate ./allure-results'
+		// 	}
+		// }
 		// stage('reports') {
     	// 		steps {
 		// 			allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
