@@ -13,15 +13,11 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				try{
+				
 					bat "docker-compose up search-module book-flight-module"
 					stash name: 'allure-results', includes: 'allure-results/*'
                     currentBuild.result = 'SUCCESS'
-				} catch (e) {
-                    stash name: 'allure-results', includes: 'allure-results/*'
-                    currentBuild.result = 'FAILED'
-                    throw e
-                }
+				
 				
 			}
 		}
