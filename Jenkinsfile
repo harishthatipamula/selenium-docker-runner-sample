@@ -13,14 +13,23 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				bat "docker-compose up search-module book-flight-module"
+				try{
+					bat "docker-compose up search-module book-flight-module"
+					stash name: 'allure-results', includes: 'allure-results/*'
+                    currentBuild.result = 'SUCCESS'
+				} catch (e) {
+                    stash name: 'allure-results', includes: 'allure-results/*'
+                    currentBuild.result = 'FAILED'
+                    throw e
+                }
+				
 			}
 		}
-		stage('reports') {
-    			steps {
-					allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
-    			}
-		}
+		// stage('reports') {
+    	// 		steps {
+		// 			allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+    	// 		}
+		// }
 	}
 	post{
 		always{
