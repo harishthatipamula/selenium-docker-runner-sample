@@ -24,6 +24,18 @@ pipeline{
 	}
 	post{
 		always{
+			
+            unstash 'allure-results' //extract results
+            script {
+                allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'allure-results']]
+            ])
+            }
+
 			archiveArtifacts artifacts: 'output/**'
 			bat "docker-compose down"
 		}
