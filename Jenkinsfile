@@ -31,20 +31,31 @@ pipeline{
 		// 			allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
     	// 		}
 		// }
+		stage('Allure Report') {
+            steps {
+                allure([
+                    includeProperties: false, 
+                    jdk: '', 
+                    properties: [], 
+                    reportBuildPolicy: 'ALWAYS', 
+                    results: [[path: 'target/allure-results']]
+                ])
+            }
+        }
 	}
 	post{
 		always{
 			
-            unstash 'allure-results' //extract results
-            script {
-                allure([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'target/allure-results']]
-            ])
-            }
+        //    unstash 'allure-results' //extract results
+        //    script {
+        //        allure([
+       //         includeProperties: false,
+       //         jdk: '',
+       //         properties: [],
+       //         reportBuildPolicy: 'ALWAYS',
+       //         results: [[path: 'target/allure-results']]
+       //     ])
+        //    }
 
 			archiveArtifacts artifacts: 'output/**'
 			bat "docker-compose down"
