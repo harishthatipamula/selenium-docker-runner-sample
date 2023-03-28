@@ -45,7 +45,7 @@ services:
       - MODULE=search-module.xml
     volumes:
       - ./output/search-result:/usr/share/udemy/test-output
-      - ./output/entireworkspacebf:/usr/share/udemy/         
+      - ./output/entireworkspacebf:/usr/share/udemy/allure-results         
   book-flight-module:
     image: abhishekneela/b2b-automation-docker
     depends_on:
@@ -57,4 +57,4 @@ services:
       - MODULE=book-flight-module.xml
     volumes:
       - ./output/book-result:/usr/share/udemy/test-output
-      - ./output/entireworkspacebf:/usr/share/udemy/      
+      - ./output/entireworkspacebf:/usr/share/udemy/allure-results      
