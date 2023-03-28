@@ -56,4 +56,4 @@ services:
       - MODULE=book-flight-module.xml
     volumes:
       - ./output/book-result:/usr/share/udemy/test-output
-      - ./target:/usr/share/udemy/test-output/allure-results
+      - ./target/allure-results:/usr/share/udemy/test-output/allure-results
