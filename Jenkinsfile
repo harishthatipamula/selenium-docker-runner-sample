@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Pull Latest Image"){
 			steps{
-				bat "docker pull abhishekneela/b2b-automation-docker"
+				bat "docker pull happyharish/b2b-automation-docker"
 			}
 		}
 		stage("Start Grid"){
