@@ -15,7 +15,7 @@ pipeline{
 			steps{
 				
 					bat "docker-compose up search-module book-flight-module"
-					stash name: 'allure-results', includes: 'allure-results/*'
+					stash name: 'allure-results', includes: '/usr/share/udemy/test-output/allure-results/*'
                    
 				
 				
