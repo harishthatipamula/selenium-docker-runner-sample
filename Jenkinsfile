@@ -15,7 +15,7 @@ pipeline{
 			steps{
 				
 					bat "docker-compose up search-module book-flight-module"
-					stash name: 'allure-results', includes: 'test-output/allure-results/*'
+					stash name: 'allure-results', includes: 'target/allure-results/*'
                    
 				
 				
@@ -42,7 +42,7 @@ pipeline{
                 jdk: '',
                 properties: [],
                 reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'test-output/allure-results/*']]
+                results: [[path: 'target/allure-results/*']]
             ])
             }
 

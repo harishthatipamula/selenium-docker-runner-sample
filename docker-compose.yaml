@@ -24,7 +24,9 @@ services:
     ports:
       - "5050:5050"
     volumes:
-      - ./allure-results:/usr/share/udemy/test-output/allure-results
+      - ./allure-results:/app/allure-results
+      - ./allure-reports:/app/default-reports
+
   allure-ui:
     image: "frankescobar/allure-docker-service-ui"
     environment:
@@ -54,3 +56,4 @@ services:
       - MODULE=book-flight-module.xml
     volumes:
       - ./output/book-result:/usr/share/udemy/test-output
+      - ./target:/usr/share/udemy/test-output/allure-results
