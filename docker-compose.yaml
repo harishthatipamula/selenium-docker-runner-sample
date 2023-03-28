@@ -24,9 +24,7 @@ services:
     ports:
       - "5050:5050"
     volumes:
-      - ./allure-results:/app/allure-results
-      - ./allure-reports:/app/default-reports
-
+      - ./allure-results:/usr/share/udemy/test-output/allure-results
   allure-ui:
     image: "frankescobar/allure-docker-service-ui"
     environment:
@@ -45,9 +43,8 @@ services:
       - MODULE=search-module.xml
     volumes:
       - ./output/search-result:/usr/share/udemy/test-output
-      - ./output/entireworkspacebf:/usr/share/udemy/allure-results         
   book-flight-module:
-    image: abhishekneela/b2b-automation-docker
+    image: happyharish/b2b-automation-docker
     depends_on:
       - chrome
       - firefox
@@ -57,4 +54,3 @@ services:
       - MODULE=book-flight-module.xml
     volumes:
       - ./output/book-result:/usr/share/udemy/test-output
-      - ./output/entireworkspacebf:/usr/share/udemy/allure-results      
