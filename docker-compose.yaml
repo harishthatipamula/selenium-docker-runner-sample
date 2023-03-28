@@ -35,7 +35,7 @@ services:
     ports:
       - "5252:5252"
   search-module:
-    image: abhishekneela/b2b-automation-docker
+    image: happyharish/b2b-automation-docker
     depends_on:
       - chrome
       - firefox
